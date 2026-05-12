@@ -1,0 +1,18 @@
+{
+  "id": "nodebb-plugin-flawless-donations",
+  "name": "Flawless RP Donations",
+  "description": "Donation store with PayPal/Stripe integration for SA-MP server",
+  "url": "",
+  "library": "./library.js",
+  "hooks": [
+    { "hook": "filter:header.build", "method": "addStoreNavLink" },
+    { "hook": "filter:user.profileMenu", "method": "addDonationHistory" },
+    { "hook": "filter:user.customFields", "method": "addDonatorBadge" },
+    { "hook": "static:app.load", "method": "init" },
+    { "hook": "filter:admin.header.build", "method": "addAdminNavLink" }
+  ],
+  "staticDirs": { "static": "./static" },
+  "less": ["static/less/donations.less"],
+  "scripts": ["static/lib/main.js"],
+  "templates": "static/templates"
+}

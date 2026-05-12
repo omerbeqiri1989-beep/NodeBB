@@ -1,0 +1,18 @@
+{
+  "name": "nodebb-plugin-flawless-samp",
+  "version": "1.0.0",
+  "description": "SA-MP gamemode integration for Flawless Roleplay — INI file sync, profile stats, auto-group assignment",
+  "author": "Flawless Roleplay Team",
+  "license": "MIT",
+  "keywords": [
+    "nodebb-plugin",
+    "samp",
+    "gamemode",
+    "integration"
+  ],
+  "nbbpm": {
+    "compatibility": "^4.0.0"
+  },
+  "dependencies": {},
+  "main": "./library.js"
+}

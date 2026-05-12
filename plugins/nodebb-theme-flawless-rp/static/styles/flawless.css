@@ -1,0 +1,1024 @@
+/* ============================================
+   FLAWLESS ROLEPLAY — Underground Criminal Empire
+   NodeBB Theme Override
+   ============================================ */
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ---- Backgrounds ---- */
+  --bs-body-bg: #0a0a0b;
+  --bs-body-color: #e5e7eb;
+  --bs-secondary-bg: #111114;
+  --bs-tertiary-bg: #18181c;
+
+  /* ---- Surfaces ---- */
+  --frp-surface: #111114;
+  --frp-surface-hover: #18181c;
+  --frp-surface-active: #1e1e24;
+  --frp-surface-elevated: #1a1a1f;
+
+  /* ---- Borders ---- */
+  --frp-border: #1e1e24;
+  --frp-border-subtle: #161619;
+  --frp-border-strong: #2a2a32;
+
+  /* ---- Primary — Gold/Amber (power, money, authority) ---- */
+  --frp-primary: #F59E0B;
+  --frp-primary-hover: #D97706;
+  --frp-primary-light: rgba(245, 158, 11, 0.15);
+  --frp-primary-glow: 0 0 20px rgba(245, 158, 11, 0.3);
+  --bs-primary: #F59E0B;
+  --bs-primary-rgb: 245, 158, 11;
+  --bs-link-color: #F59E0B;
+  --bs-link-hover-color: #D97706;
+
+  /* ---- Danger — Red ---- */
+  --frp-danger: #EF4444;
+  --frp-danger-light: rgba(239, 68, 68, 0.15);
+
+  /* ---- Success — Green ---- */
+  --frp-success: #22C55E;
+  --frp-success-light: rgba(34, 197, 94, 0.15);
+
+  /* ---- Info — Blue (law enforcement) ---- */
+  --frp-info: #3B82F6;
+  --frp-info-light: rgba(59, 130, 246, 0.15);
+
+  /* ---- Warning ---- */
+  --frp-warning: #F59E0B;
+  --frp-warning-light: rgba(245, 158, 11, 0.15);
+
+  /* ---- Muted ---- */
+  --frp-muted: #6B7280;
+  --frp-muted-light: #9CA3AF;
+
+  /* ---- Faction Colors ---- */
+  --frp-faction-lspd: #3B82F6;
+  --frp-faction-fbi: #1D4ED8;
+  --frp-faction-sasd: #92400E;
+  --frp-faction-ares: #7C3AED;
+  --frp-faction-sanews: #06B6D4;
+  --frp-faction-gov: #059669;
+  --frp-faction-hitman: #DC2626;
+  --frp-faction-medic: #F43F5E;
+  --frp-faction-ng: #4B5563;
+
+  /* ---- Gang Colors (from bandana hex) ---- */
+  --frp-gang-ghouls: #F58216;
+  --frp-gang-velvet: #636363;
+  --frp-gang-baba: #22C55E;
+  --frp-gang-rifa: #3B82F6;
+  --frp-gang-grove: #16A34A;
+  --frp-gang-lcn: #1F2937;
+
+  /* ---- Typography ---- */
+  --frp-font-display: 'Barlow Condensed', sans-serif;
+  --frp-font-body: 'Barlow', sans-serif;
+  --frp-font-mono: 'JetBrains Mono', monospace;
+  --bs-body-font-family: 'Barlow', sans-serif;
+}
+
+/* ============================================
+   GLOBAL OVERRIDES
+   ============================================ */
+
+body {
+  background-color: #0a0a0b !important;
+  color: #e5e7eb;
+  font-family: var(--frp-font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--frp-primary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--frp-primary-hover);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--frp-font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #f3f4f6;
+}
+
+code, pre, .monospace {
+  font-family: var(--frp-font-mono);
+}
+
+::selection {
+  background: rgba(245, 158, 11, 0.3);
+  color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a32;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a44;
+}
+
+/* ============================================
+   HEADER / NAVBAR
+   ============================================ */
+
+.navbar,
+[component="navbar"],
+header .navbar {
+  background: #111114 !important;
+  border-bottom: 1px solid var(--frp-border) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+}
+
+.navbar .navbar-brand,
+[component="navbar"] .navbar-brand {
+  font-family: var(--frp-font-display) !important;
+  font-weight: 700 !important;
+  color: var(--frp-primary) !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.3rem;
+}
+
+.navbar .nav-link,
+[component="navbar"] .nav-link {
+  color: #9CA3AF !important;
+  font-family: var(--frp-font-body);
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active,
+[component="navbar"] .nav-link:hover,
+[component="navbar"] .nav-link.active {
+  color: var(--frp-primary) !important;
+}
+
+.navbar .dropdown-menu,
+[component="navbar"] .dropdown-menu {
+  background: var(--frp-surface) !important;
+  border: 1px solid var(--frp-border) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.navbar .dropdown-item,
+[component="navbar"] .dropdown-item {
+  color: #e5e7eb !important;
+}
+
+.navbar .dropdown-item:hover,
+[component="navbar"] .dropdown-item:hover {
+  background: var(--frp-surface-hover) !important;
+  color: var(--frp-primary) !important;
+}
+
+/* ============================================
+   CATEGORY LIST
+   ============================================ */
+
+[component="categories/category"] {
+  background: var(--frp-surface) !important;
+  border: 1px solid var(--frp-border) !important;
+  border-left: 3px solid var(--frp-primary) !important;
+  border-radius: 4px !important;
+  margin-bottom: 8px !important;
+  transition: all 0.2s ease;
+}
+
+[component="categories/category"]:hover {
+  border-left-color: var(--frp-primary-hover) !important;
+  background: var(--frp-surface-hover) !important;
+  box-shadow: var(--frp-primary-glow);
+}
+
+/* Category Headers / Section Headers */
+.category-header,
+.section-header {
+  font-family: var(--frp-font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--frp-primary);
+  border-bottom: 2px solid var(--frp-primary);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  font-size: 1.1rem;
+}
+
+/* Category icons */
+[component="categories/category"] .category-icon {
+  color: var(--frp-primary);
+}
+
+/* Category stats */
+[component="categories/category"] .category-stat {
+  color: var(--frp-muted);
+  font-family: var(--frp-font-mono);
+  font-size: 0.8rem;
+}
+
+/* Category description */
+[component="categories/category"] .category-description {
+  color: var(--frp-muted-light);
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   TOPIC LIST
+   ============================================ */
+
+[component="category/topic"],
+[component="category"] .topic-row,
+.topics-list .topic-row {
+  background: var(--frp-surface) !important;
+  border: 1px solid var(--frp-border) !important;
+  border-radius: 4px !important;
+  margin-bottom: 4px !important;
+  transition: all 0.15s ease;
+}
+
+[component="category/topic"]:hover,
+.topics-list .topic-row:hover {
+  background: var(--frp-surface-hover) !important;
+  border-color: var(--frp-border-strong) !important;
+}
+
+[component="category/topic"] .title,
+.topics-list .topic-title a {
+  color: #e5e7eb !important;
+  font-weight: 500;
+}
+
+[component="category/topic"] .title:hover,
+.topics-list .topic-title a:hover {
+  color: var(--frp-primary) !important;
+}
+
+/* Pinned topics */
+[component="category/topic"].pinned {
+  border-left: 3px solid var(--frp-primary) !important;
+}
+
+/* Locked topics */
+[component="category/topic"].locked {
+  opacity: 0.7;
+}
+
+/* ============================================
+   TOPIC VIEW / POST CONTENT
+   ============================================ */
+
+[component="post"],
+.post-container {
+  background: var(--frp-surface) !important;
+  border: 1px solid var(--frp-border) !important;
+  border-radius: 4px !important;
+  margin-bottom: 12px !important;
+}
+
+[component="post"] .post-header {
+  border-bottom: 1px solid var(--frp-border);
+  padding-bottom: 8px;
+}
+
+[component="post"] .content,
+.post-content {
+  color: #d1d5db;
+  line-height: 1.7;
+}
+
+[component="post"] .content blockquote {
+  border-left: 3px solid var(--frp-primary);
+  background: var(--frp-primary-light);
+  padding: 12px 16px;
+  border-radius: 0 4px 4px 0;
+  color: #e5e7eb;
+}
+
+[component="post"] .content code {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--frp-primary);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: var(--frp-font-mono);
+}
+
+[component="post"] .content pre {
+  background: #0d0d0f !important;
+  border: 1px solid var(--frp-border);
+  border-radius: 4px;
+  padding: 16px;
+}
+
+/* Post actions */
+[component="post"] .post-footer .btn,
+[component="post"] .actions .btn {
+  color: var(--frp-muted) !important;
+  transition: color 0.15s ease;
+}
+
+[component="post"] .post-footer .btn:hover,
+[component="post"] .actions .btn:hover {
+  color: var(--frp-primary) !important;
+}
+
+/* ============================================
+   USER PROFILE / AVATAR
+   ============================================ */
+
+.avatar {
+  border: 2px solid var(--frp-border);
+  border-radius: 50%;
+}
+
+/* Donator glow effects */
+.avatar.donator-daisy {
+  border-color: #A3E635;
+  box-shadow: 0 0 8px rgba(163, 230, 53, 0.3);
+}
+
+.avatar.donator-rose {
+  border-color: #F59E0B;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.3);
+}
+
+.avatar.donator-ivy {
+  border-color: #EF4444;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+  animation: ivyGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes ivyGlow {
+  from { box-shadow: 0 0 8px rgba(239, 68, 68, 0.3); }
+  to { box-shadow: 0 0 16px rgba(245, 158, 11, 0.5); }
+}
+
+/* User profile page */
+[component="account/profile"] {
+  background: var(--frp-surface) !important;
+}
+
+.profile-header {
+  background: linear-gradient(135deg, #111114 0%, #1a1a1f 100%);
+  border-bottom: 2px solid var(--frp-primary);
+}
+
+/* ============================================
+   SIDEBAR & WIDGETS
+   ============================================ */
+
+.sidebar .widget,
+[widget-area] .widget {
+  background: var(--frp-surface) !important;
+  border: 1px solid var(--frp-border) !important;
+  border-radius: 4px !important;
+  margin-bottom: 12px !important;
+}
+
+.sidebar .widget .widget-header,
+[widget-area] .widget .widget-header {
+  font-family: var(--frp-font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--frp-primary);
+  border-bottom: 2px solid var(--frp-primary);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn-primary,
+.btn-primary:focus {
+  background-color: var(--frp-primary) !important;
+  border-color: var(--frp-primary) !important;
+  color: #000 !important;
+  font-family: var(--frp-font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--frp-primary-hover) !important;
+  border-color: var(--frp-primary-hover) !important;
+  box-shadow: var(--frp-primary-glow);
+}
+
+.btn-outline-primary {
+  border-color: var(--frp-primary) !important;
+  color: var(--frp-primary) !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--frp-primary) !important;
+  color: #000 !important;
+}
+
+.btn-secondary {
+  background-color: var(--frp-surface-active) !important;
+  border-color: var(--frp-border) !important;
+  color: #e5e7eb !important;
+}
+
+.btn-secondary:hover {
+  background-color: var(--frp-surface-hover) !important;
+  border-color: var(--frp-border-strong) !important;
+}
+
+.btn-danger {
+  background-color: var(--frp-danger) !important;
+  border-color: var(--frp-danger) !important;
+}
+
+.btn-success {
+  background-color: var(--frp-success) !important;
+  border-color: var(--frp-success) !important;
+}
+
+/* ============================================
+   FORMS & INPUTS
+   ============================================ */
+
+.form-control,
+.form-select,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  background-color: #0d0d0f !important;
+  border: 1px solid var(--frp-border) !important;
+  color: #e5e7eb !important;
+  font-family: var(--frp-font-body);
+  border-radius: 4px;
+  transition: border-color 0.15s ease;
+}
+
+.form-control:focus,
+.form-select:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--frp-primary) !important;
+  box-shadow: 0 0 0 3px var(--frp-primary-light) !important;
+  outline: none;
+}
+
+.form-control::placeholder {
+  color: var(--frp-muted) !important;
+}
+
+/* ============================================
+   CARDS & PANELS
+   ============================================ */
+
+.card {
+  background: var(--frp-surface) !important;
+  border: 1px solid var(--frp-border) !important;
+  border-radius: 4px !important;
+}
+
+.card-header {
+  background: var(--frp-surface-hover) !important;
+  border-bottom: 1px solid var(--frp-border) !important;
+  font-family: var(--frp-font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.card-footer {
+  background: var(--frp-surface-hover) !important;
+  border-top: 1px solid var(--frp-border) !important;
+}
+
+/* ============================================
+   MODALS
+   ============================================ */
+
+.modal-content {
+  background: var(--frp-surface) !important;
+  border: 1px solid var(--frp-border) !important;
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--frp-border) !important;
+}
+
+.modal-footer {
+  border-top: 1px solid var(--frp-border) !important;
+}
+
+/* ============================================
+   PAGINATION
+   ============================================ */
+
+.pagination .page-link {
+  background: var(--frp-surface) !important;
+  border-color: var(--frp-border) !important;
+  color: #e5e7eb !important;
+}
+
+.pagination .page-link:hover {
+  background: var(--frp-surface-hover) !important;
+  color: var(--frp-primary) !important;
+}
+
+.pagination .page-item.active .page-link {
+  background: var(--frp-primary) !important;
+  border-color: var(--frp-primary) !important;
+  color: #000 !important;
+}
+
+/* ============================================
+   BREADCRUMBS
+   ============================================ */
+
+.breadcrumb {
+  background: transparent !important;
+  padding: 8px 0;
+}
+
+.breadcrumb-item a {
+  color: var(--frp-muted-light) !important;
+}
+
+.breadcrumb-item a:hover {
+  color: var(--frp-primary) !important;
+}
+
+.breadcrumb-item.active {
+  color: var(--frp-primary) !important;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  color: var(--frp-muted) !important;
+}
+
+/* ============================================
+   ALERTS & NOTIFICATIONS
+   ============================================ */
+
+.alert-success {
+  background: var(--frp-success-light) !important;
+  border-color: var(--frp-success) !important;
+  color: var(--frp-success) !important;
+}
+
+.alert-danger {
+  background: var(--frp-danger-light) !important;
+  border-color: var(--frp-danger) !important;
+  color: var(--frp-danger) !important;
+}
+
+.alert-warning {
+  background: var(--frp-warning-light) !important;
+  border-color: var(--frp-warning) !important;
+  color: var(--frp-warning) !important;
+}
+
+.alert-info {
+  background: var(--frp-info-light) !important;
+  border-color: var(--frp-info) !important;
+  color: var(--frp-info) !important;
+}
+
+/* ============================================
+   BADGES & LABELS
+   ============================================ */
+
+.badge {
+  font-family: var(--frp-font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge.badge-primary,
+.badge.bg-primary {
+  background: var(--frp-primary) !important;
+  color: #000 !important;
+}
+
+/* Faction badges */
+.badge-faction-lspd { background: var(--frp-faction-lspd) !important; }
+.badge-faction-fbi { background: var(--frp-faction-fbi) !important; }
+.badge-faction-sasd { background: var(--frp-faction-sasd) !important; }
+.badge-faction-ares { background: var(--frp-faction-ares) !important; }
+.badge-faction-sanews { background: var(--frp-faction-sanews) !important; }
+.badge-faction-gov { background: var(--frp-faction-gov) !important; }
+.badge-faction-hitman { background: var(--frp-faction-hitman) !important; }
+.badge-faction-medic { background: var(--frp-faction-medic) !important; }
+.badge-faction-ng { background: var(--frp-faction-ng) !important; }
+
+/* Gang badges */
+.badge-gang-ghouls { background: var(--frp-gang-ghouls) !important; }
+.badge-gang-velvet { background: var(--frp-gang-velvet) !important; }
+.badge-gang-baba { background: var(--frp-gang-baba) !important; }
+.badge-gang-rifa { background: var(--frp-gang-rifa) !important; }
+.badge-gang-grove { background: var(--frp-gang-grove) !important; }
+.badge-gang-lcn { background: var(--frp-gang-lcn) !important; }
+
+/* VIP badges */
+.badge-vip-daisy {
+  background: linear-gradient(135deg, #A3E635, #65A30D) !important;
+  color: #000 !important;
+}
+
+.badge-vip-rose {
+  background: linear-gradient(135deg, #F59E0B, #D97706) !important;
+  color: #000 !important;
+}
+
+.badge-vip-ivy {
+  background: linear-gradient(135deg, #EF4444, #DC2626) !important;
+  color: #fff !important;
+  animation: ivyBadgeGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes ivyBadgeGlow {
+  from { box-shadow: 0 0 4px rgba(239, 68, 68, 0.3); }
+  to { box-shadow: 0 0 12px rgba(245, 158, 11, 0.5); }
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+
+.table,
+table {
+  --bs-table-bg: var(--frp-surface);
+  --bs-table-border-color: var(--frp-border);
+  color: #e5e7eb;
+}
+
+.table thead th {
+  background: var(--frp-surface-hover) !important;
+  border-bottom: 2px solid var(--frp-primary) !important;
+  font-family: var(--frp-font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--frp-primary);
+  font-size: 0.85rem;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid var(--frp-border);
+}
+
+.table tbody tr:hover {
+  background: var(--frp-surface-hover) !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background: rgba(17, 17, 20, 0.5) !important;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer,
+[component="footer"] {
+  background: #0a0a0b !important;
+  border-top: 1px solid var(--frp-border) !important;
+  color: var(--frp-muted);
+}
+
+footer a {
+  color: var(--frp-muted-light) !important;
+}
+
+footer a:hover {
+  color: var(--frp-primary) !important;
+}
+
+/* ============================================
+   COMPOSER (Post Editor)
+   ============================================ */
+
+.composer {
+  background: var(--frp-surface) !important;
+  border: 1px solid var(--frp-border) !important;
+}
+
+.composer .title-container input {
+  background: #0d0d0f !important;
+  border: 1px solid var(--frp-border) !important;
+  color: #e5e7eb !important;
+}
+
+.composer .write-container textarea,
+.composer .preview-container {
+  background: #0d0d0f !important;
+  color: #e5e7eb !important;
+}
+
+.composer .formatting-bar {
+  background: var(--frp-surface-hover) !important;
+  border-bottom: 1px solid var(--frp-border) !important;
+}
+
+.composer .formatting-bar .btn {
+  color: var(--frp-muted-light) !important;
+}
+
+.composer .formatting-bar .btn:hover {
+  color: var(--frp-primary) !important;
+}
+
+/* ============================================
+   CHAT
+   ============================================ */
+
+[component="chat"] {
+  background: var(--frp-surface) !important;
+}
+
+[component="chat/message"] {
+  border-bottom: 1px solid var(--frp-border);
+}
+
+/* ============================================
+   SEARCH
+   ============================================ */
+
+.search-results .search-result {
+  background: var(--frp-surface) !important;
+  border: 1px solid var(--frp-border) !important;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.search-results .search-result:hover {
+  border-color: var(--frp-primary) !important;
+}
+
+/* ============================================
+   ADMIN CONTROL PANEL (ACP) — Minimal overrides
+   ============================================ */
+
+.acp-page {
+  background: #0a0a0b;
+}
+
+/* ============================================
+   LOADING / SPINNER
+   ============================================ */
+
+.loading-indicator {
+  border-color: var(--frp-primary) transparent transparent transparent !important;
+}
+
+/* ============================================
+   TOOLTIPS & POPOVERS
+   ============================================ */
+
+.tooltip-inner {
+  background: var(--frp-surface-elevated) !important;
+  border: 1px solid var(--frp-border);
+  color: #e5e7eb;
+}
+
+.popover {
+  background: var(--frp-surface) !important;
+  border: 1px solid var(--frp-border) !important;
+}
+
+/* ============================================
+   CUSTOM: SERVER STATUS WIDGET
+   ============================================ */
+
+.frp-server-status {
+  background: var(--frp-surface) !important;
+  border: 1px solid var(--frp-border) !important;
+  border-radius: 4px;
+}
+
+.frp-server-status .status-online {
+  color: var(--frp-success);
+}
+
+.frp-server-status .status-offline {
+  color: var(--frp-danger);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ============================================
+   CUSTOM: GAME STATS PROFILE CARD
+   ============================================ */
+
+.frp-game-stats {
+  background: var(--frp-surface) !important;
+  border: 1px solid var(--frp-border) !important;
+  border-radius: 4px;
+}
+
+.frp-game-stats .card-header {
+  font-family: var(--frp-font-display);
+  color: var(--frp-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.frp-game-stats .stat-item {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--frp-border);
+}
+
+.frp-game-stats .stat-item:last-child {
+  border-bottom: none;
+}
+
+.frp-game-stats .stat-label {
+  color: var(--frp-muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+}
+
+.frp-game-stats .stat-value {
+  color: #e5e7eb;
+  font-family: var(--frp-font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* ============================================
+   CUSTOM: DONATION STORE
+   ============================================ */
+
+.frp-store-item {
+  background: var(--frp-surface);
+  border: 1px solid var(--frp-border);
+  border-radius: 4px;
+  padding: 20px;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.frp-store-item:hover {
+  border-color: var(--frp-primary);
+  box-shadow: var(--frp-primary-glow);
+  transform: translateY(-2px);
+}
+
+.frp-store-item.tier-daisy {
+  border-top: 3px solid #A3E635;
+}
+
+.frp-store-item.tier-rose {
+  border-top: 3px solid #F59E0B;
+}
+
+.frp-store-item.tier-ivy {
+  border-top: 3px solid #EF4444;
+}
+
+.frp-store-item .price {
+  font-family: var(--frp-font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--frp-primary);
+}
+
+.frp-store-item .price .currency {
+  font-size: 0.9rem;
+  color: var(--frp-muted);
+}
+
+/* ============================================
+   CUSTOM: RECENT THREADS WIDGET
+   ============================================ */
+
+.frp-latest-widget {
+  background: var(--frp-surface);
+  border: 1px solid var(--frp-border);
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.frp-latest-widget h4 {
+  font-family: var(--frp-font-display);
+  color: var(--frp-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid var(--frp-primary);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.frp-latest-widget .topic-item {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--frp-border);
+}
+
+.frp-latest-widget .topic-item:last-child {
+  border-bottom: none;
+}
+
+.frp-latest-widget .topic-item a {
+  color: #e5e7eb;
+  font-size: 0.9rem;
+}
+
+.frp-latest-widget .topic-item a:hover {
+  color: var(--frp-primary);
+}
+
+.frp-latest-widget .topic-meta {
+  font-size: 0.75rem;
+  color: var(--frp-muted);
+  margin-top: 2px;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+  .navbar .navbar-brand {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+
+  [component="categories/category"] {
+    border-left-width: 2px !important;
+  }
+
+  .frp-store-item {
+    padding: 12px;
+  }
+
+  .frp-game-stats .row {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  h1, h2 {
+    font-size: 1.2rem;
+  }
+
+  .frp-store-item .price {
+    font-size: 1.2rem;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-gold { color: var(--frp-primary) !important; }
+.text-danger-frp { color: var(--frp-danger) !important; }
+.text-success-frp { color: var(--frp-success) !important; }
+.text-info-frp { color: var(--frp-info) !important; }
+.text-muted-frp { color: var(--frp-muted) !important; }
+
+.bg-surface { background: var(--frp-surface) !important; }
+.bg-surface-hover { background: var(--frp-surface-hover) !important; }
+
+.border-gold { border-color: var(--frp-primary) !important; }
+.border-frp { border-color: var(--frp-border) !important; }
+
+.glow-gold { box-shadow: var(--frp-primary-glow); }
+
+.font-display { font-family: var(--frp-font-display) !important; }
+.font-body { font-family: var(--frp-font-body) !important; }
+.font-mono { font-family: var(--frp-font-mono) !important; }

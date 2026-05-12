@@ -1,0 +1,16 @@
+{
+  "id": "nodebb-plugin-sso-flawless",
+  "name": "Flawless RP SSO",
+  "description": "JWT-based SSO bridge for Flawless Roleplay UCP integration",
+  "url": "",
+  "library": "./library.js",
+  "hooks": [
+    { "hook": "static:app.load", "method": "init" },
+    { "hook": "filter:auth.getLoginStrategies", "method": "getStrategy" },
+    { "hook": "action:user.loggedOut", "method": "onLogout" },
+    { "hook": "filter:header.build", "method": "addUCPLink" }
+  ],
+  "staticDirs": {
+    "static": "./static"
+  }
+}

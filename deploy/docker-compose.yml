@@ -1,0 +1,150 @@
+version: '3.8'
+
+# ============================================================
+# Flawless Roleplay — Full Stack Deployment
+# NodeBB Forum + MongoDB + Redis + UCP + Nginx
+# ============================================================
+
+services:
+  # ---- NodeBB Forum ----
+  nodebb:
+    build:
+      context: ./nodebb
+      dockerfile: Dockerfile
+    container_name: flawless-nodebb
+    restart: unless-stopped
+    ports:
+      - "4567:4567"
+    environment:
+      - NODE_ENV=production
+      - url=${NODEBB_URL:-https://forum.flawlessrp.com}
+      - secret=${NODEBB_SECRET}
+      - database=mongo
+      - mongo__host=mongo
+      - mongo__port=27017
+      - mongo__username=${MONGO_USER:-flawless}
+      - mongo__password=${MONGO_PASS}
+      - mongo__database=${MONGO_DB:-flawless_nodebb}
+      - JWT_SECRET=${JWT_SECRET}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY:-}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET:-}
+      - PAYPAL_CLIENT_ID=${PAYPAL_CLIENT_ID:-}
+      - PAYPAL_CLIENT_SECRET=${PAYPAL_CLIENT_SECRET:-}
+      - PAYPAL_SANDBOX=${PAYPAL_SANDBOX:-true}
+      - SCRIPTFILES_PATH=/scriptfiles
+      - UCP_URL=${UCP_URL:-https://ucp.flawlessrp.com}
+      - UCP_API_URL=${UCP_API_URL:-http://ucp:3000}
+      - COOKIE_DOMAIN=${COOKIE_DOMAIN:-.flawlessrp.com}
+      - SAMP_SERVER_IP=${SAMP_SERVER_IP:-play.flawlessrp.com}
+      - SAMP_SERVER_PORT=${SAMP_SERVER_PORT:-7777}
+      - SAMP_SYNC_INTERVAL=${SAMP_SYNC_INTERVAL:-300000}
+    volumes:
+      - nodebb-data:/opt/nodebb/public/uploads
+      - nodebb-logs:/opt/nodebb/logs
+      - ${SCRIPTFILES_PATH:-./scriptfiles}:/scriptfiles:ro
+    depends_on:
+      mongo:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4567/api/config"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    networks:
+      - flawless-net
+
+  # ---- MongoDB ----
+  mongo:
+    image: mongo:7
+    container_name: flawless-mongo
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USER:-flawless}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASS}
+      - MONGO_INITDB_DATABASE=${MONGO_DB:-flawless_nodebb}
+    volumes:
+      - mongo-data:/data/db
+      - mongo-config:/data/configdb
+    ports:
+      - "127.0.0.1:27017:27017"
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - flawless-net
+
+  # ---- Redis ----
+  redis:
+    image: redis:7-alpine
+    container_name: flawless-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis-data:/data
+    ports:
+      - "127.0.0.1:6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - flawless-net
+
+  # ---- UCP (Flawless RP User Control Panel) ----
+  ucp:
+    build:
+      context: ${UCP_BUILD_CONTEXT:-../flawless-rp-ucp}
+      dockerfile: Dockerfile
+    container_name: flawless-ucp
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=${DATABASE_URL}
+      - JWT_SECRET=${JWT_SECRET}
+      - SCRIPTFILES_PATH=/scriptfiles
+      - COOKIE_DOMAIN=${COOKIE_DOMAIN:-.flawlessrp.com}
+    volumes:
+      - ${SCRIPTFILES_PATH:-./scriptfiles}:/scriptfiles
+    networks:
+      - flawless-net
+
+  # ---- Nginx Reverse Proxy ----
+  nginx:
+    image: nginx:alpine
+    container_name: flawless-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - nodebb
+      - ucp
+    networks:
+      - flawless-net
+
+volumes:
+  nodebb-data:
+    driver: local
+  nodebb-logs:
+    driver: local
+  mongo-data:
+    driver: local
+  mongo-config:
+    driver: local
+  redis-data:
+    driver: local
+
+networks:
+  flawless-net:
+    driver: bridge

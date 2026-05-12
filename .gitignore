@@ -75,3 +75,19 @@ test.sh
 .docker/**
 !**/.gitkeep
 .aider*
+# Flawless RP — Additional .gitignore entries
+# Append these to the existing .gitignore
+
+# Environment files
+deploy/.env
+deploy/nginx/ssl/
+
+# Scriptfiles (game data)
+scriptfiles/
+
+# NodeBB uploads
+public/uploads/
+
+# Logs
+logs/
+*.log

@@ -1,0 +1,16 @@
+{
+  "id": "nodebb-theme-flawless-rp",
+  "name": "Flawless Roleplay Theme",
+  "description": "Underground Criminal Empire — Dark theme with gold/amber accents for SA-MP Roleplay",
+  "url": "https://github.com/omerbeqiri1989-beep/NodeBB",
+  "library": "./library.js",
+  "hooks": [
+    { "hook": "filter:config.get", "method": "onConfigGet" },
+    { "hook": "filter:header.build", "method": "addCustomCSS" }
+  ],
+  "staticDirs": {
+    "static": "./static"
+  },
+  "css": ["static/styles/flawless.css"],
+  "templates": "./templates"
+}

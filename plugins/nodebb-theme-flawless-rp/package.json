@@ -1,0 +1,26 @@
+{
+  "name": "nodebb-theme-flawless-rp",
+  "version": "1.0.0",
+  "description": "Flawless Roleplay — Underground Criminal Empire theme for NodeBB. Dark obsidian backgrounds, gold/amber accents, Barlow Condensed typography.",
+  "author": "Flawless Roleplay Team",
+  "license": "MIT",
+  "keywords": [
+    "nodebb-theme",
+    "samp",
+    "roleplay",
+    "dark-theme",
+    "gaming"
+  ],
+  "nbbpm": {
+    "compatibility": "^4.0.0"
+  },
+  "theme": {
+    "id": "nodebb-theme-flawless-rp",
+    "name": "Flawless Roleplay",
+    "baseTheme": "nodebb-theme-harmony",
+    "templates": "./templates",
+    "screenshot": "./screenshot.png"
+  },
+  "scripts": {},
+  "dependencies": {}
+}

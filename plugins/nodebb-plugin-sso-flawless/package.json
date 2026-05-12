@@ -1,0 +1,21 @@
+{
+  "name": "nodebb-plugin-sso-flawless",
+  "version": "1.0.0",
+  "description": "SSO bridge between Flawless RP UCP and NodeBB — JWT-based shared authentication",
+  "author": "Flawless Roleplay Team",
+  "license": "MIT",
+  "keywords": [
+    "nodebb-plugin",
+    "sso",
+    "samp",
+    "jwt"
+  ],
+  "nbbpm": {
+    "compatibility": "^4.0.0"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^9.0.0",
+    "cookie-parser": "^1.4.6"
+  },
+  "main": "./library.js"
+}

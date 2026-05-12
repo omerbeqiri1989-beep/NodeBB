@@ -1,0 +1,22 @@
+{
+  "name": "nodebb-plugin-flawless-donations",
+  "version": "1.0.0",
+  "description": "Donation store with Stripe/PayPal integration for Flawless Roleplay SA-MP server",
+  "author": "Flawless Roleplay Team",
+  "license": "MIT",
+  "keywords": [
+    "nodebb-plugin",
+    "donations",
+    "stripe",
+    "paypal",
+    "samp",
+    "vip"
+  ],
+  "nbbpm": {
+    "compatibility": "^4.0.0"
+  },
+  "dependencies": {
+    "stripe": "^14.0.0"
+  },
+  "main": "./library.js"
+}

@@ -1,0 +1,66 @@
+/* Flawless Roleplay — Game Stats Styles */
+
+.game-stats-page {
+  .frp-game-stats {
+    background: #111114;
+    border: 1px solid #1e1e24;
+    border-radius: 4px;
+
+    .stat-label {
+      color: #6B7280;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      color: #e5e7eb;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+
+  .progress {
+    height: 4px;
+    background: #1e1e24;
+    border-radius: 2px;
+    margin-top: 4px;
+  }
+}
+
+/* Profile sidebar game stats widget */
+[data-widget="game-stats"] {
+  .frp-game-stats {
+    background: #111114;
+    border: 1px solid #1e1e24;
+    border-radius: 4px;
+
+    .stat-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      border-bottom: 1px solid #1e1e24;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .stat-label {
+        color: #6B7280;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .stat-value {
+        color: #e5e7eb;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+      }
+    }
+  }
+}

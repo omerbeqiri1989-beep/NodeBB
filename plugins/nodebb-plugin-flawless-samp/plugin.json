@@ -1,0 +1,18 @@
+{
+  "id": "nodebb-plugin-flawless-samp",
+  "name": "Flawless RP SA-MP Integration",
+  "description": "Bridges in-game SA-MP data to the forum — profile stats, auto-group assignment, INI file sync",
+  "url": "",
+  "library": "./library.js",
+  "hooks": [
+    { "hook": "static:app.load", "method": "init" },
+    { "hook": "filter:user.profileMenu", "method": "addGameStatsTab" },
+    { "hook": "filter:user.account", "method": "addGameDataToProfile" },
+    { "hook": "filter:user.customFields", "method": "addGameBadges" },
+    { "hook": "filter:user.whitelistFields", "method": "whitelistGameFields" }
+  ],
+  "staticDirs": { "static": "./static" },
+  "less": ["static/less/game-stats.less"],
+  "scripts": ["static/lib/game-stats.js"],
+  "templates": "static/templates"
+}

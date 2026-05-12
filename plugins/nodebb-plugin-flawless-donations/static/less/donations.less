@@ -1,0 +1,84 @@
+/* Flawless Roleplay — Donation Store Styles */
+
+.store-page {
+  .section-header {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #F59E0B;
+    border-bottom: 2px solid #F59E0B;
+    padding-bottom: 8px;
+    margin: 32px 0 16px 0;
+    font-size: 1.1rem;
+  }
+}
+
+.frp-store-item {
+  background: #111114;
+  border: 1px solid #1e1e24;
+  border-radius: 4px;
+  padding: 20px;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    border-color: #F59E0B;
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+    transform: translateY(-2px);
+  }
+
+  &.tier-daisy {
+    border-top: 3px solid #A3E635;
+  }
+
+  &.tier-rose {
+    border-top: 3px solid #F59E0B;
+  }
+
+  &.tier-ivy {
+    border-top: 3px solid #EF4444;
+  }
+
+  .price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #F59E0B;
+
+    .currency {
+      font-size: 0.9rem;
+      color: #6B7280;
+    }
+  }
+
+  ul li {
+    padding: 4px 0;
+    color: #d1d5db;
+    font-size: 0.85rem;
+
+    .fa-check {
+      margin-right: 8px;
+    }
+  }
+}
+
+.category-filter {
+  &.active {
+    background: #F59E0B !important;
+    color: #000 !important;
+    border-color: #F59E0B !important;
+  }
+}
+
+#paymentModal {
+  .modal-content {
+    background: #111114;
+    border: 1px solid #1e1e24;
+  }
+
+  .modal-header {
+    border-bottom: 1px solid #1e1e24;
+  }
+}
